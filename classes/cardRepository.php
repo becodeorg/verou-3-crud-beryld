@@ -28,13 +28,15 @@ class CardRepository
     public function get(): array
     {
         // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
+//        return [
+//            ['name' => 'dummy one'],
+//            ['name' => 'dummy two'],
+//        ];
+        $sql = "SELECT * FROM Donuts";
 
         // We get the database connection first, so we can apply our queries with it
-        // return $this->databaseManager->connection-> (runYourQueryHere)
+        //TODO: sql queries
+         return $this->databaseManager->connection->query($sql);
     }
 
     public function update(): void

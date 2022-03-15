@@ -9,11 +9,13 @@
 </head>
 <body>
 
-<h1>Goodcard - track your collection of Pokémon cards</h1>
+<h1>DONUTS DONUTS DONUTS  - I WANT A BUNCH  of DONUTS</h1>
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?></li>
+        <li> Donut's name : <?= $card['name'] ?></li>
+        <li>Donut's flavour :<?= $card['flavour'] ?></li>
+        <li> Nobody care about their IDs :D </li>
     <?php endforeach; ?>
 </ul>
 
