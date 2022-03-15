@@ -25,13 +25,18 @@ class CardRepository
     }
 
     // Get all
-    public function get(): array
+    public function get(): bool|PDOStatement
     {
         // TODO: replace dummy data by real one
+//        $names = "select donuts.names from Donuts";
+//        foreach ($cards as card){
+//        echo $cards
+//    }
 //        return [
 //            ['name' => 'dummy one'],
 //            ['name' => 'dummy two'],
 //        ];
+
         $sql = "SELECT * FROM Donuts";
 
         // We get the database connection first, so we can apply our queries with it

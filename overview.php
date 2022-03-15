@@ -13,9 +13,11 @@
 
 <ul>
     <?php foreach ($cards as $card) : ?>
+        <pre>
         <li> Donut's name : <?= $card['name'] ?></li>
         <li>Donut's flavour :<?= $card['flavour'] ?></li>
         <li> Nobody care about their IDs :D </li>
+        </pre>
     <?php endforeach; ?>
 </ul>
 
