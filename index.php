@@ -30,12 +30,16 @@ $action = $_GET['action'] ?? null;
 
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
+
 switch ($action) {
     case 'create':
          create($cardRepository);
         break;
     case 'editing' :
         update($cardRepository);
+        break;
+    case 'update' :
+        edited($cardRepository);
         break;
     default:
         overview($cards);
@@ -65,3 +69,12 @@ function update($cardRepository)
     $cardRepository->update();
 
 }
+
+function edited($cardRepository)
+{
+    $cardRepository->edited();
+    header("Location: index.php");
+
+    exit();
+}
+

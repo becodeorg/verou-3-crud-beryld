@@ -65,26 +65,33 @@ class CardRepository
         require 'edit.php';
         echo 'hey'   ;
 
-        if (isset($_GET['update'])){
-            $name=$_GET['donutNewName'];
-            $flavour=$_GET['donutNewFlavour'];
-            $vegan=$_GET['veganista'] ? 1 : 0;
-            $sqlUpdate = "UPDATE donuts set name= :name, flavour= :flavour,vegan= :flavour WHERE donuts.name=$_GET";
-            var_dump($sqlUpdate);
 
-
-        $stmt = $this->databaseManager->connection->prepare($sqlUpdate);
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':flavour', $flavour);
-            $stmt->bindParam(':vegan', $vegan);
-            $stmt->execute();
-        //TODO: the binparams
-        }
     }
 
     public function delete(): void
     {
 
+    }
+    public function edited() : void
+    {
+        $name=$_GET['donutNewName'];
+        $flavour=$_GET['donutNewFlavour'];
+        $vegan=!empty($_GET['veganista']) ? 1 : 0;
+//        var_dump($_GET);
+        $thename=$_GET['name'];
+        $sqlUpdate = "UPDATE donuts set name= :name, flavour= :flavour,vegan= :vegan WHERE donuts.name='$thename'";
+
+
+
+        $stmt = $this->databaseManager->connection->prepare($sqlUpdate);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':flavour', $flavour);
+        $stmt->bindParam(':vegan', $vegan);
+        echo "<pre>";
+        var_dump($stmt);
+        var_dump($sqlUpdate);
+        echo "</pre>";
+        $stmt->execute();
     }
 
 }

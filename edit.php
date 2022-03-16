@@ -19,7 +19,8 @@
     <p>please enter the new flavour  <input type="text" name="donutNewFlavour"></p>
     <?= var_dump( $_GET);?>
     <p><input type="checkbox" name="veganista"> Check the box if  it is a Vegan Donut ?</p>
-    <p><input type="submit" name="update" value="update"></p>
+    <p><input type="submit" name="action" value="update" ></p>
+    <input type="hidden" name="name" value="<?=$_GET['name']?>">
 </form>
 </body>
 </html>
