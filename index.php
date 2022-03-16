@@ -16,20 +16,22 @@ require_once 'classes/CardRepository.php';
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
-// This example is about a Pokémon card collection
-// Update the naming if you'd like to work with another collection
+
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
+//var_dump($_GET['donuts']);
+
 $action = $_GET['action'] ?? null;
+//$action->create();
 
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
     case 'create':
-        create();
+         create($cardRepository);
         break;
     default:
         overview($cards);
@@ -43,7 +45,14 @@ function overview($cards)
     require 'overview.php';
 }
 
-function create()
+function create($cardRepository)
 {
+   $cardRepository->create();
+
+    header("Location: index.php");
+
+    exit();
+
+
     // TODO: provide the create logic
 }
