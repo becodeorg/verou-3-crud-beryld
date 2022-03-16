@@ -13,6 +13,7 @@ require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
+
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
@@ -32,6 +33,9 @@ $action = $_GET['action'] ?? null;
 switch ($action) {
     case 'create':
          create($cardRepository);
+        break;
+    case 'editing' :
+        update($cardRepository);
         break;
     default:
         overview($cards);
@@ -55,4 +59,9 @@ function create($cardRepository)
 
 
     // TODO: provide the create logic
+}
+function update($cardRepository)
+{
+    $cardRepository->update();
+
 }

@@ -37,7 +37,7 @@ class CardRepository
     public function find(): array
     {
 
-
+//        $sqlvegan = "SELECT * FROM Donuts where Donuts.vegan = 1";
 
     }
 
@@ -55,16 +55,31 @@ class CardRepository
 //        ];
 
         $sql = "SELECT * FROM Donuts ";
-        $sqlvegan = "SELECT * FROM Donuts where Donuts.vegan = 1";
 
-        // We get the database connection first, so we can apply our queries with it
-        //TODO: sql queries
+
          return $this->databaseManager->connection->query($sql);
     }
 
     public function update(): void
     {
+        require 'edit.php';
+        echo 'hey'   ;
 
+        if (isset($_GET['update'])){
+            $name=$_GET['donutNewName'];
+            $flavour=$_GET['donutNewFlavour'];
+            $vegan=$_GET['veganista'] ? 1 : 0;
+            $sqlUpdate = "UPDATE donuts set name= :name, flavour= :flavour,vegan= :flavour WHERE donuts.name=$_GET";
+            var_dump($sqlUpdate);
+
+
+        $stmt = $this->databaseManager->connection->prepare($sqlUpdate);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':flavour', $flavour);
+            $stmt->bindParam(':vegan', $vegan);
+            $stmt->execute();
+        //TODO: the binparams
+        }
     }
 
     public function delete(): void
