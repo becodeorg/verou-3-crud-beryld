@@ -1,0 +1,29 @@
+*{
+background: #fff1c2 ;
+}
+.listing-cards{
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+#theD{
+
+    /*width: 50vw;*/
+
+}
+#theDletter{
+    margin-left: 20px;
+}
+#theDletter, #theOletter{
+    width: 48vw;
+}
+#theNuts{
+    width: 30vw;
+    margin-left: 35vw;
+    margin-bottom: 30px;
+
+
+
+}
