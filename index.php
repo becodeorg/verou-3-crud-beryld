@@ -41,6 +41,15 @@ switch ($action) {
     case 'update' :
         edited($cardRepository);
         break;
+    case 'clickDelete' :
+        clickDelete($cardRepository);
+        break;
+    case 'delete' :
+        delete($cardRepository);
+        break;
+    case 'cancel':
+        cancel($cardRepository);
+        break;
     default:
         overview($cards);
         break;
@@ -75,6 +84,22 @@ function edited($cardRepository)
     $cardRepository->edited();
     header("Location: index.php");
 
+    exit();
+}
+function clickDelete($cardRepository)
+{
+    $cardRepository->clickDelete();
+}
+function delete($cardRepository)
+{
+    $cardRepository->delete();
+    header("location: index.php");
+    exit();
+
+}
+function cancel($cardRepository)
+{
+    header("location: index.php");
     exit();
 }
 
