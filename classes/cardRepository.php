@@ -24,9 +24,7 @@ class CardRepository
     // Get one
     public function find(): array
     {
-
 //        $sqlvegan = "SELECT * FROM Donuts where Donuts.vegan = 1";
-
     }
 
     // Get all
@@ -40,6 +38,7 @@ class CardRepository
     {
         require 'edit.php';
     }
+
     public function clickDelete(): void
     {
         require 'delete.php';
@@ -54,12 +53,12 @@ class CardRepository
         $stmt = $this->databaseManager->connection->prepare($sqlUpdate);
         $stmt->execute();
     }
+
     public function edited() : void
     {
         $name=$_GET['donutNewName'];
         $flavour=$_GET['donutNewFlavour'];
         $vegan=!empty($_GET['veganista']) ? 1 : 0;
-//        var_dump($_GET);
         $thename=$_GET['name'];
         $sqlUpdate = "UPDATE donuts set name= :name, flavour= :flavour,vegan= :vegan WHERE donuts.name='$thename'";
         $stmt = $this->databaseManager->connection->prepare($sqlUpdate);
